@@ -50,15 +50,13 @@ function modalOpenClick(e) {
 refs.closeBtnEl.addEventListener("click", closeModal);
 
 function closeModal() {
+  document.removeEventListener("keydown", closeModalByEscape);
   refs.modalEl.classList.remove("is-open");
   refs.modalImgEl.src = "";
+  refs.modalImgEl.alt = "";
 }
 
-function closeModalByOverlay() {
-  refs.overlayEl.addEventListener("click", closeModal);
-}
-
-refs.overlayEl.addEventListener("click", closeModalByOverlay);
+refs.overlayEl.addEventListener("click", closeModal);
 
 function closeModalByEscape(e) {
   if (e.code === "Escape") {
